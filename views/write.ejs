@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>注册页面</title>
+  <% include head %>
+</head>
+
+<body>
+  <form action="/article/write" method="post">
+    <div class="form-group">
+        <input type="hidden" name="id" value="<%- item.id %>">
+        <input type="hidden" name="page" value="<%- item.page %>">
+      <input type="text" name="title" class="form-control" placeholder="请输入标题" value="<%= item.title %>">
+    </div>
+    <textarea name="content" id="editor"><%- item.content %></textarea>
+    <% if (item.id){%>
+    <button type="submit" class="btn btn-primary">修改</button>
+    <% } else {%>
+    <button type="submit" class="btn btn-primary">发布</button>
+    <%}%>
+  </form>
+  <script src="/ckeditor5/ckeditor.js"></script>
+  <script>
+    ClassicEditor
+    .create(document.querySelector('#editor'),{
+      ckfinder:{
+        uploadUrl:"/article/upload"//上传文件接口
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    }); 
+  </script>
+</body>
+
+</html>

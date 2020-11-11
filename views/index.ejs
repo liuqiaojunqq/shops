@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <% include head %>
+  </head>
+  <body>
+       <%- include('bar',{username:username}) %>
+       <div class="list">
+         <% data.list.map(function(item,index){ %>
+          <table class="table table-hover">
+            <tr>
+              <td><%= index+1 %></td>
+              <td><a href="/details?id=<%=item.id%>"><%= item.title %></a></td>
+              <td><%= item.time %></td>
+              <td><a href="/write?id=<%=item.id%>&page=<%=data.currentPage%>">编辑</a></td>
+              <td><a href="/article/delete?id=<%=item.id%>&page=<%=data.currentPage%>">删除</a></td>
+            </tr>
+          </table>
+          <% }) %>
+          <ul class="pagination">
+            <% for(let i=0;i<data.totle;i++){ %>
+            <li><a href="/?page= <%=i+1%>"><%= i+1 %></a></li>
+            <% } %>
+          </div>
+       </div>
+  </body>
+</html>

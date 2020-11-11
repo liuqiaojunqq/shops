@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>登录页面</title>
+    <% include head %>
+  </head>
+  <body>
+    <form action="/users/login" method="post">
+        <div class="form-group">
+          <label>用户名:</label>
+          <input type="text" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>密码:</label>
+          <input type="password" name="password" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">登录</button>
+        <div>没有帐号?<a href="/register">立即注册</a>！</div>
+      </form>
+  </body>
+</html>
